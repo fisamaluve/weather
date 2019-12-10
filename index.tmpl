@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather data for {{ location }}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style type="text/css">
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+body {
+min-height: 100%;
+background-image: url("/transcon/static/bg.jpg");
+background-size:  cover;
+background-attachment: fixed;
+font-family: "Source Sans Pro","Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#main {
+max-width: 600px;
+margin: auto;
+background-color: rgba(255, 255, 255, 0.5);
+text-align: center;
+padding:10px;
+}
+#current {
+font-size:45px;
+margin-top:10px;
+}
+#archive {
+margin:auto;
+border-collapse: collapse;
+}
+table, th, td {
+border: 1px solid grey;
+}
+td {
+padding:5px;
+}
+</style>
+ <script src="/transcon/static/skycons.js"></script> 
+	
+</head>
+
+<body>
+<div id="main">
+	<h1>Weather data for {{ location }}</h1>
+		<canvas id="icon1" width="100" height="100"></canvas>
+        <p id="current">{{ current[3] }}°C | {{ current[4] }}</p>
+		<script>
+			var skycons = new Skycons();
+			skycons.add("icon1", "{{ current[5] }}");
+			skycons.play();
+		</script>
+		<h2>Past weather</h2>
+        <table id="archive">
+            {% for record in archive %}
+            <tr><td>{{ record[1] | format_datetime }}</td><td>{{ record[3] }} °C</td><td>{{ record[4] }}</td></tr>
+            {% endfor %}
+        </table>
+</div>
+</body>
+
+</html>
