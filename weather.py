@@ -8,7 +8,7 @@ LOG_FILE = "weather.log"
 PERIOD = 5 # in minutes
 LOCATION_NAME = "Ostrava"
 LAT_LON = "49.8209,18.2625"
-API_KEY = "396d860ffc2d16b44404698531c49a1e"
+API_KEY = "xxxxxxxxxxxxxxxxxxxx"
 
 # load simple app server to publish script as web service
 from flask import Flask, render_template
